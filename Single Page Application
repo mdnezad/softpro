@@ -1,0 +1,127 @@
+// in main.js
+
+console.log(location.hash)
+// This will listen for the fragment identifier change
+window.addEventListener("hashchange", function() {
+  console.log(location.hash);
+});
+// in main.js
+
+window.addEventListener("hashchange", function (){
+  var contentDiv = document.getElementById("app");
+  contentDiv.innerHTML = location.hash;
+});
+// in main.js
+function loadContent(){
+  var contentDiv = document.getElementById("app");
+  contentDiv.innerHTML = location.hash;
+}
+
+window.addEventListener("hashchange", function (){
+  loadContent();
+});
+
+loadContent();
+// in main.js
+function loadContent(){
+  var contentDiv = document.getElementById("app");
+  contentDiv.innerHTML = location.hash;
+}
+
+
+window.addEventListener("hashchange", loadContent);
+
+loadContent();
+// in main.js
+function loadContent(){
+  var contentDiv = document.getElementById("app");
+  contentDiv.innerHTML = location.hash;
+}
+
+if(!location.hash) {
+  location.hash = "#home";
+}
+
+loadContent();
+
+window.addEventListener("hashchange", loadContent)
+if(!location.hash){
+    location.hash = "#home";
+}
+// in main.js
+function loadContent(){
+  var contentDiv = document.getElementById("app"),
+
+      // This gets rid of the first character of the string
+      fragmentId = location.hash.substr(1);
+
+  contentDiv.innerHTML = fragmentId;
+}
+
+if(!location.hash) {
+  location.hash = "#home";
+}
+
+
+loadContent();
+
+window.addEventListener("hashchange", loadContent)
+function getContent(fragmentId){
+
+// lets do some custom content for each page of your website
+  var pages = {
+    home: "This is the Home page. Welcome to my site.",
+    about: "This page will describe what my site is about",
+    contact: "Contact me on this page if you have any questions"
+  };
+
+// look up what fragment you are searching for in the object
+  return pages[fragmentId];
+}
+
+function loadContent(){
+
+  var contentDiv = document.getElementById("app"),
+      fragmentId = location.hash.substr(1);
+
+  contentDiv.innerHTML = getContent(fragmentId);
+}
+
+if(!location.hash) {
+  location.hash = "#home";
+}
+
+loadContent();
+
+window.addEventListener("hashchange", loadContent)
+function getContent(fragmentId, callback){
+
+  var pages = {
+    home: "This is the Home page. Welcome to my site.",
+    about: "This page will describe what my site is about",
+    contact: "Contact me on this page if you have any questions"
+  };
+
+  callback(pages[fragmentId]);
+}
+
+
+
+function loadContent(){
+
+  var contentDiv = document.getElementById("app"),
+      fragmentId = location.hash.substr(1);
+
+  getContent(fragmentId, function (content) {
+    contentDiv.innerHTML = content;
+  });
+
+}
+
+if(!location.hash) {
+  location.hash = "#home";
+}
+
+loadContent();
+
+window.addEventListener("hashchange", loadContent)
